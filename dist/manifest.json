@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "KinNo アシスタント",
+  "version": "1.0.0",
+  "description": "Kindleでハイライトした内容をNotionへ連携するGoogle Chrome拡張機能です。",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting"
+  ],
+  "icons": {
+    "128": "public/icon.png"
+  },
+  "background": {
+    "service_worker": "service-worker-loader.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "assets/content-script-loader.content.ts-CisRePzf-Bw_hU4-Z.js"
+      ],
+      "matches": [
+        "https://read.amazon.co.jp/notebook*"
+      ]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "host_permissions": [
+    "https://api.notion.com/v1/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "https://read.amazon.co.jp/*"
+      ],
+      "resources": [
+        "assets/content.ts-CisRePzf.js"
+      ],
+      "use_dynamic_url": true
+    }
+  ]
+}
